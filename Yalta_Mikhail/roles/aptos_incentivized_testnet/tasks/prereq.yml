@@ -1,0 +1,15 @@
+---
+
+- name: create directory
+  file:
+    path:
+     - "{{ item.dir }}"
+     - "{{ item.aptos_dir }}"
+    state: directory
+  loop: "{{ project_vars }}"
+
+- name: copying scrip in workdir
+  copy:
+    src: script.sh
+    dest: "{{ item }}"
+  loop: "{{ project_vars.dir }}"

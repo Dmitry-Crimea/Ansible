@@ -1,0 +1,27 @@
+---
+
+home_directory:
+user_dir:
+workdir:
+
+dependencies:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - gnupg-agent
+  - software-properties-common
+  - wget
+  - unzip
+
+project_vars:
+  - name: project_vars
+    dir: "/{{ home_directory }}/{{ user_dir }}/{{ workdir }}"
+    aptos_dir: "/{{ home_directory }}/{{ user_dir }}/.aptos"
+    user: "{{ user_dir }}"
+
+docker_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-compose-plugin
+
