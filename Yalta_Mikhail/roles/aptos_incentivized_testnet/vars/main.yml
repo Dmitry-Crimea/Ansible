@@ -18,6 +18,7 @@ project_vars:
     dir: "/{{ home_directory }}/{{ user_dir }}/{{ workdir }}"
     aptos_dir: "/{{ home_directory }}/{{ user_dir }}/.aptos"
     user: "{{ user_dir }}"
+    version: 0.1.1
 
 docker_packages:
   - docker-ce
