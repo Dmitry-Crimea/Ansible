@@ -30,3 +30,7 @@
     src: "{{ item.aptos_dir }}"
     dest: "{{ item.system_dir }}"
     remote_src: yes
+
+- name: print aptos info
+  shell: aptos --version
+  register: result

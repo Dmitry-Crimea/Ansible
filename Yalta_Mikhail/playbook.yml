@@ -1,0 +1,5 @@
+---
+- hosts: node
+  gather_facts: false
+  roles:
+    - aptos_incentivized_testnet
