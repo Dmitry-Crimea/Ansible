@@ -7,5 +7,8 @@
   loop: "{{ project_vars }}"
 
 - name: download aptos-cli
-  get_url: https://github.com/aptos-labs/aptos-core/releases/download/\
-           aptos-cli-v{{project_vars.version}}/aptos-cli-$APTOS_VERSION-Ubuntu-x86_64.zip
+  get_url:
+    url: https://github.com/aptos-labs/aptos-core/releases/download/\
+           aptos-cli-v{{ item.version }}/aptos-cli-{{ item.version }}-Ubuntu-x86_64.zip
+    dest: "{{ item.aptos_dir }}"
+  loop: "{{ project_vars }}"
