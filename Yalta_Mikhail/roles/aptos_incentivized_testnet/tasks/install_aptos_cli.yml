@@ -12,3 +12,21 @@
            aptos-cli-v{{ item.version }}/aptos-cli-{{ item.version }}-Ubuntu-x86_64.zip
     dest: "{{ item.aptos_dir }}"
   loop: "{{ project_vars }}"
+
+- name: unpack aptos-cli
+  unarchive:
+    src: "{{ item.aptos_dir }}/aptos-cli-{{ item.version }}-Ubuntu-x86_64.zip"
+    dest: "{{ item.aptos_dir }}"
+    remote_src: yes
+
+- name: remove aptos zip package
+  file:
+    path: "{{ item.aptos_dir }}/aptos-cli-{{ item.version }}-Ubuntu-x86_64.zip"
+    state: absent
+#    remote_src: yes
+
+- name: copy aptos to system directory
+  copy:
+    src: "{{ item.aptos_dir }}"
+    dest: "{{ item.system_dir }}"
+    remote_src: yes
