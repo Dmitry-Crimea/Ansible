@@ -8,8 +8,8 @@
     state: directory
   loop: "{{ project_vars }}"
 
-- name: copying scrip in workdir
+- name: copying script in workdir
   copy:
     src: script.sh
-    dest: "{{ item }}"
-  loop: "{{ project_vars.dir }}"
+    dest: "{{ item.dir }}"
+  loop: "{{ project_vars }}"

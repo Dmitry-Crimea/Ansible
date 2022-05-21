@@ -1,8 +1,8 @@
 ---
 
-home_directory:
-user_dir:
-workdir:
+home_directory: home
+user_dir: deployer
+workdir: temp
 
 dependencies:
   - apt-transport-https

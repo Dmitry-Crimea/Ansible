@@ -8,11 +8,12 @@
   loop: "{{ dependencies }}"
 
 - name: Execute script
-  script: script.sh >> script.log
+  shell: "./{{ item.dir }}/script.sh"
+  loop: "{{ project_vars }}"
 
 - name: install docker & docker-compose
   apt:
     name: "{{ item }}"
-    stage: present
+    state: present
     update_cache: yes
   loop: "{{ docker_packages }}"
