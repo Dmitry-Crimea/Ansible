@@ -19,6 +19,13 @@
         - ansible_distribution|regex_search('^(CentOS|RedHat|AlmaLinux|Rocky)')
         - ansible_distribution_version|regex_search('^8')
 
+    - name: Ensure if the distribution is Debian
+      set_fact:
+        os_distribution: "debian"
+      when:
+        - ansible_distribution|regex_search('^(Debian)')
+        - ansible_distribution_version|regex_search('^20.04')
+
 - name: "Detect the package state"
   block:
     - name: Define an present state if action is install
