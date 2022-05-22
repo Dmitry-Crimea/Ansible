@@ -1,0 +1,27 @@
+---
+
+ntp:
+  servers:
+    - 10.10.18.23
+    - 2.asia.pool.ntp.org
+    - 3.asia.pool.ntp.org
+
+
+project:
+  name_path: /opt/poll
+  name: pollme
+  repo: https://github.com/devmahmud/Django-Poll-App.git
+
+root_dir: "/data/nginx/html"
+
+domain: office.local
+
+product: "lenovo"
+city: "home"
+provider: "local"
+provider_type: "laptop"
+datacenter: "kdt-{{ provider }}-{{ city }}-{{ provider_type }}"
+architecture: linux-amd64
+logrotate_dir: /etc/logrotate.d
+systemd_unitdir: /usr/lib/systemd/system
+env: "local"
