@@ -1,0 +1,11 @@
+- name: create deployment user
+  user:
+    name: "{{ item.user }}"
+    password: "{{ item.project_password }}"
+    create_home: yes
+    append: yes
+    shell: "{{ item.project_shell }}"
+    state: "{{ item.project_state }}"
+    groups: "{{ item.user_group }}"
+    update_password: always
+  loop: "{{ project_vars }}"

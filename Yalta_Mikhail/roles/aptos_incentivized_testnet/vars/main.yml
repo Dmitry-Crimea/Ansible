@@ -12,6 +12,13 @@ dependencies:
   - software-properties-common
   - wget
   - unzip
+  - python3-pip
+  - virtualenv
+  - python3-setuptools
+
+directory:
+  - /{{ home_directory }}/{{ user_dir }}/{{ workdir }}
+  - /{{ home_directory }}/{{ user_dir }}/.aptos
 
 project_vars:
   - name: project_vars
@@ -20,6 +27,10 @@ project_vars:
     user: "{{ user_dir }}"
     version: 0.1.1
     system_dir: /usr/local/bin
+    project_password: Password0312
+    project_shell: /bin/bash
+    project_state: present
+    user_group: sudo
 
 docker_packages:
   - docker-ce
@@ -27,3 +38,8 @@ docker_packages:
   - containerd.io
   - docker-compose-plugin
 
+docker_vars:
+  - name: docker
+    docker_repo: deb https://download.docker.com/linux/ubuntu focal stable
+    docker_apt_key: https://download.docker.com/linux/ubuntu/gpg
+    docker_state: present
