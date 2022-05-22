@@ -1,6 +1,5 @@
 ---
 
-
 - name: create directory
   remote_user: "{{ deploy_user }}"
   file:

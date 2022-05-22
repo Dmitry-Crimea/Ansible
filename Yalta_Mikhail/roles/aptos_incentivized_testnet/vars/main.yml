@@ -4,6 +4,8 @@ home_directory: home
 deploy_user: deployer
 workdir: temp
 
+################################################################
+
 dependencies:
   - apt-transport-https
   - ca-certificates
@@ -16,9 +18,13 @@ dependencies:
   - virtualenv
   - python3-setuptools
 
+################################################################
+
 directory:
   - /{{ home_directory }}/{{ deploy_user }}/{{ workdir }}
   - /{{ home_directory }}/{{ deploy_user }}/.aptos
+  -
+################################################################
 
 aptos_project_vars:
   - name: aptos_project_vars
@@ -32,12 +38,18 @@ aptos_project_vars:
     project_state: present
     user_group: sudo
     aptos_dir_state: directory
+    aptos_url: "https://github.com/aptos-labs/aptos-core/releases/download/\
+                aptos-cli-v{{ item.version }}/aptos-cli-{{ item.version }}-Ubuntu-x86_64.zip"
+
+################################################################
 
 docker_packages:
   - docker-ce
   - docker-ce-cli
   - containerd.io
   - docker-compose-plugin
+
+################################################################
 
 docker_vars:
   - name: docker

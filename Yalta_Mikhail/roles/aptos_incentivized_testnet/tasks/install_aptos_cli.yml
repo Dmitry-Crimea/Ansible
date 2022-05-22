@@ -1,7 +1,5 @@
 ---
 
-
-
 - name: download aptos-cli
   get_url:
     url: https://github.com/aptos-labs/aptos-core/releases/download/\
