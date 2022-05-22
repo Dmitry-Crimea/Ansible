@@ -15,3 +15,6 @@
 - name: generate key
   shell: cd $APTOS_DIR && \
          aptos genesis generate-keys --output-dir $APTOS_DIR
+
+
+
