@@ -1,7 +1,7 @@
 ---
 
 home_directory: home
-user_dir: deployer
+deploy_user: deployer
 workdir: temp
 
 dependencies:
@@ -17,20 +17,21 @@ dependencies:
   - python3-setuptools
 
 directory:
-  - /{{ home_directory }}/{{ user_dir }}/{{ workdir }}
-  - /{{ home_directory }}/{{ user_dir }}/.aptos
+  - /{{ home_directory }}/{{ deploy_user }}/{{ workdir }}
+  - /{{ home_directory }}/{{ deploy_user }}/.aptos
 
-project_vars:
-  - name: project_vars
-    dir: "/{{ home_directory }}/{{ user_dir }}/{{ workdir }}"
-    aptos_dir: "/{{ home_directory }}/{{ user_dir }}/.aptos"
-    user: "{{ user_dir }}"
+aptos_project_vars:
+  - name: aptos_project_vars
+    dir: "/{{ home_directory }}/{{ deploy_user }}/{{ workdir }}"
+    aptos_dir: "/{{ home_directory }}/{{ deploy_user }}/.aptos"
+    user: "{{ deploy_user }}"
     version: 0.1.1
     system_dir: /usr/local/bin
     project_password: Password0312
     project_shell: /bin/bash
     project_state: present
     user_group: sudo
+    aptos_dir_state: directory
 
 docker_packages:
   - docker-ce
@@ -40,6 +41,9 @@ docker_packages:
 
 docker_vars:
   - name: docker
-    docker_repo: deb https://download.docker.com/linux/ubuntu focal stable
-    docker_apt_key: https://download.docker.com/linux/ubuntu/gpg
+    docker_repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} \
+                 {{ ansible_distribution_release }} stable"
+    docker_apt_key: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
     docker_state: present
+    docker_user: "{{ deploy_user }}"
+    docker_group: docker

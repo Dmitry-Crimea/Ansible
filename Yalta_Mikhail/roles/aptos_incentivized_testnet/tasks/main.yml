@@ -1,13 +1,15 @@
 ---
 
-#- name: 'CREATE_USER | create deploy user'
-#  import_tasks: add_user.yml
+- name: 'CREATE_USER | create deploy user'
+  import_tasks: add_user.yml
+  tags: ['new-user']
 
 - name: 'PREREQUISITES | prepare to install'
   import_tasks: prereq.yml
 
 - name: 'INSTALL | install docker and dependencies'
-  import_tasks: install.yml
+  import_tasks: install_docker.yml
+  tags: ['docker']
 
 - name: 'INSTALL_APTOS | install aptos '
   import_tasks: install_aptos_cli.yml

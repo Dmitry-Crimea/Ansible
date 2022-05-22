@@ -1,17 +1,13 @@
 ---
 
-- name: make aptos directory
-  file:
-    path: "{{ item.aptos_dir }}"
-    state: directory
-  loop: "{{ project_vars }}"
+
 
 - name: download aptos-cli
   get_url:
     url: https://github.com/aptos-labs/aptos-core/releases/download/\
            aptos-cli-v{{ item.version }}/aptos-cli-{{ item.version }}-Ubuntu-x86_64.zip
     dest: "{{ item.aptos_dir }}"
-  loop: "{{ project_vars }}"
+  loop: "{{ aptos_project_vars }}"
 
 - name: unpack aptos-cli
   unarchive:

@@ -2,16 +2,26 @@
 
 
 - name: create directory
+  remote_user: "{{ deploy_user }}"
   file:
-    path: "{{ item }}"
-    state: directory
-  loop: "{{ directory }}"
+    path: "{{ item.aptos_dir }}"
+    state: "{{ item.aptos_dir_state }}"
+  loop: "{{ aptos_project_vars }}"
 
+- name: install dependencies & aptitude
+  block:
+    - name: Install aptitude
+      remote_user: "{{ deploy_user }}"
+      apt:
+        name: aptitude
+        state: latest
+        update_cache: yes
 
-
-#- name: copying script in workdir
-#  copy:
-#    src: script.sh
-#    dest: "{{ item.dir }}"
-#  loop: "{{ project_vars }}"
+    - name: install dependencies
+      remote_user: "{{ deploy_user }}"
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      loop: "{{ dependencies }}"
 
