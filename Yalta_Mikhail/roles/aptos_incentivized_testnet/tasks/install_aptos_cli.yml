@@ -2,8 +2,7 @@
 
 - name: download aptos-cli
   get_url:
-    url: https://github.com/aptos-labs/aptos-core/releases/download/\
-           aptos-cli-v{{ item.version }}/aptos-cli-{{ item.version }}-Ubuntu-x86_64.zip
+    url: "{{ item.aptos_url }}"
     dest: "{{ item.aptos_dir }}"
   loop: "{{ aptos_project_vars }}"
 
@@ -12,19 +11,20 @@
     src: "{{ item.aptos_dir }}/aptos-cli-{{ item.version }}-Ubuntu-x86_64.zip"
     dest: "{{ item.aptos_dir }}"
     remote_src: yes
+  loop: "{{ aptos_project_vars }}"
 
 - name: remove aptos zip package
   file:
     path: "{{ item.aptos_dir }}/aptos-cli-{{ item.version }}-Ubuntu-x86_64.zip"
     state: absent
 #    remote_src: yes
+  loop: "{{ aptos_project_vars }}"
 
 - name: copy aptos to system directory
   copy:
     src: "{{ item.aptos_dir }}"
     dest: "{{ item.system_dir }}"
     remote_src: yes
+  loop: "{{ aptos_project_vars }}"
 
-- name: print aptos info
-  shell: aptos --version
-  register: result
+

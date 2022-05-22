@@ -3,7 +3,7 @@
 home_directory: home
 deploy_user: deployer
 workdir: temp
-
+aptos_version: 0.1.1
 ################################################################
 
 dependencies:
@@ -31,7 +31,7 @@ aptos_project_vars:
     dir: "/{{ home_directory }}/{{ deploy_user }}/{{ workdir }}"
     aptos_dir: "/{{ home_directory }}/{{ deploy_user }}/.aptos"
     user: "{{ deploy_user }}"
-    version: 0.1.1
+    version: "{{ aptos_version }}"
     system_dir: /usr/local/bin
     project_password: Password0312
     project_shell: /bin/bash
@@ -39,7 +39,7 @@ aptos_project_vars:
     user_group: sudo
     aptos_dir_state: directory
     aptos_url: "https://github.com/aptos-labs/aptos-core/releases/download/\
-                aptos-cli-v{{ item.version }}/aptos-cli-{{ item.version }}-Ubuntu-x86_64.zip"
+                aptos-cli-v{{ aptos_version }}/aptos-cli-{{ aptos_version }}-Ubuntu-x86_64.zip"
 
 ################################################################
 
