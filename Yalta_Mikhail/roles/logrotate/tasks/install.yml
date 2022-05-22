@@ -1,6 +1,7 @@
 ---
 
 - name: Install package
+  remote_user: "{{ deploy_user }}"
   import_role:
     name: os/package
   vars:
@@ -9,6 +10,7 @@
       - "logrotate"
 
 - name: Copy /etc/logrotate.conf file
+  remote_user: "{{ deploy_user }}"
   template:
     src: logrotate.conf.j2
     dest: /etc/logrotate.conf
@@ -17,6 +19,7 @@
     mode: 0644
 
 - name: Copy /etc/cron.hourly/logrotate file
+  remote_user: "{{ deploy_user }}"
   template:
     src: logrotate.cron.hourly.j2
     dest: /etc/cron.hourly/logrotate

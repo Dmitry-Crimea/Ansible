@@ -1,5 +1,6 @@
 ---
 
 - name: Set timezone for lxc to Asia/Almaty
+  remote_user: "{{ deploy_user }}"
   timezone:
     name: "{{ ntp_defaults.timezone }}"
