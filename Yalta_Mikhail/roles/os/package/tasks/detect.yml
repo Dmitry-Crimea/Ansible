@@ -21,9 +21,9 @@
 
     - name: Ensure if the distribution is Debian
       set_fact:
-        os_distribution: "debian"
+        os_distribution: "ubuntu"
       when:
-        - ansible_distribution|regex_search('^(Debian)')
+        - ansible_distribution|regex_search('^(Ubuntu)')
         - ansible_distribution_version|regex_search('^20.04')
 
 - name: "Detect the package state"

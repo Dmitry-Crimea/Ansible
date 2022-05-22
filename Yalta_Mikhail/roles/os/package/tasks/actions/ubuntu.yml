@@ -4,4 +4,4 @@
   apt:
     name: "{{ package_name.split(',') }}"
     state: "{{ package_state }}"
-    disable_gpg_check: yes
+#    disable_gpg_check: yes
