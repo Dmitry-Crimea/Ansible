@@ -107,4 +107,4 @@ docker_vars:
     docker_state: present
     docker_user: "{{ deploy_user }}"
     docker_group: docker
-    docker_logrotate_dir: /etc/logrotate.d/docker-container
+    docker_logrotate_dir: "/etc/logrotate.d/docker-container"
