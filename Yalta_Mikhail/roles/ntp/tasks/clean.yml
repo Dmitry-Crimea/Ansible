@@ -1,5 +1,6 @@
 ---
 
+
 - name: Include service type variables
   remote_user: "{{ deploy_user }}"
   include_vars: "{{ prevtype }}.yml"

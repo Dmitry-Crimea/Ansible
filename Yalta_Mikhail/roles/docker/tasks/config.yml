@@ -7,10 +7,17 @@
     tags:
       - docker
 
+- name: change domain name
+  shell: export HOSTNAME=gitlab.devops.me
+  tags:
+    - docker
+
 - name: custom port SSH
   shell: sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
   notify:
     - restart_ssh_service
   tags:
     - docker
+
+
 
