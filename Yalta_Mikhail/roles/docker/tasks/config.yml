@@ -11,7 +11,7 @@
   remote_user: "{{ deploy_user }}"
   template:
     src: docker-container.j2
-    dest: "{{ item.docker_logrotate_dir }}"
+    dest: "{{ item.docker_logrotate_dir }}/docker-container"
   loop: "{{ docker_vars }}"
 
 
