@@ -1,6 +1,6 @@
 ---
 
-- name: Set timezone to Asia/Almaty
+- name: Set timezone to Europe/Moscow
   remote_user: "{{ deploy_user }}"
   timezone:
     name: "{{ ntp_defaults.timezone }}"
@@ -103,11 +103,11 @@
   delay: 5
   when: type == 'ntp'
 
-- name: Ensure logrotate package is installed and set up
-  remote_user: "{{ deploy_user }}"
-  include_role:
-    name: os/logrotate
-    tasks_from: install
+#- name: Ensure logrotate package is installed and set up
+#  remote_user: "{{ deploy_user }}"
+#  include_role:
+#    name: os/logrotate
+#    tasks_from: install
 
 - name: Delete logrotate file
   remote_user: "{{ deploy_user }}"

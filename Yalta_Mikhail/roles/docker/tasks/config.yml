@@ -4,8 +4,8 @@
   template:
     src: docker-compose.yml.j2
     dest: /root/docker-compose.yml
-    tags:
-      - docker
+  tags:
+    - docker
 
 #- name: change domain name
 #  shell: export HOSTNAME=gitlab.devops.me
