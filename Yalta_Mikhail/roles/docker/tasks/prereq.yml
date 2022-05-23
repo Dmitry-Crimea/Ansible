@@ -1,12 +1,5 @@
 ---
 
-#- name: create directory
-#  remote_user: "{{ deploy_user }}"
-#  file:
-#    path: "{{ item.aptos_dir }}"
-#    state: "{{ item.aptos_dir_state }}"
-#  loop: "{{ aptos_project_vars }}"
-
 - name: install dependencies & aptitude
   block:
     - name: Install aptitude
@@ -15,14 +8,6 @@
         name: aptitude
         state: latest
         update_cache: yes
-
-#    - name: install dependencies
-#      remote_user: "{{ deploy_user }}"
-#      apt:
-#        name: "{{ item }}"
-#        state: present
-#        update_cache: yes
-#      loop: "{{ dependencies }}"
 
     - name: Install dependencies
       remote_user: "{{ deploy_user }}"
