@@ -6,7 +6,11 @@
     dest: /root/docker-compose.yml
   tags:
     - docker
-
+- name: move logrotate filein logrotate_dir
+  template:
+    src: docker-container.j2
+    dest: "{{ item.docker_logrotate_dir }}"
+  loop: "{{ docker_vars }}"
 #- name: change domain name
 #  shell: export HOSTNAME=gitlab.devops.me
 #  tags:
