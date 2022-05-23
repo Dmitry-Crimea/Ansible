@@ -16,6 +16,17 @@ project:
 
 ################################################################
 
+gitlab_directory_list:
+  - /opt/gitlab
+  - /opt/gitlab/config
+  - /opt/gitlab/logs
+  - /opt/gitlab/data
+  - /opt/gitlab-runner
+  - /opt/gitlab-runner/config
+  - /opt/gitlab-runner/data
+
+################################################################
+
 root_dir: "/data/nginx/html"
 
 ################################################################

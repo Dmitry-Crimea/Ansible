@@ -1,5 +1,12 @@
 ---
 
+- name: make directory for gitlab
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop: "{{ gitlab_directory_list }}"
+
+
 - name: install dependencies & aptitude
   block:
     - name: Install aptitude
