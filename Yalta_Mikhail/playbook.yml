@@ -2,6 +2,10 @@
 - hosts: node
 #  gather_facts: false
   roles:
-    - docker
+#    - docker
+    - letsencrypt
+#    - rocky
+#    - nginx
+#    - selinux
 #    - logrotate
 #    - ntp
