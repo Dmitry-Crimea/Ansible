@@ -1,11 +1,11 @@
 ---
 
-- name: create directory
-  remote_user: "{{ deploy_user }}"
+- name: make directory for gitlab
   file:
-    path: "{{ item.aptos_dir }}"
-    state: "{{ item.aptos_dir_state }}"
-  loop: "{{ aptos_project_vars }}"
+    path: "{{ item }}"
+    state: directory
+  loop: "{{ gitlab_directory_list }}"
+
 
 - name: install dependencies & aptitude
   block:
@@ -16,13 +16,13 @@
         state: latest
         update_cache: yes
 
-    - name: install dependencies
+    - name: Install dependencies
       remote_user: "{{ deploy_user }}"
-      apt:
-        name: "{{ item }}"
-        state: present
-        update_cache: yes
-      loop: "{{ dependencies }}"
+      import_role:
+        name: os/package
+      vars:
+        package_action: "install"
+        package_list: "{{ dependencies }}"
 
 
 

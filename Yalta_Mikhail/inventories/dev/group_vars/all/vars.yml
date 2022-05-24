@@ -16,6 +16,17 @@ project:
 
 ################################################################
 
+gitlab_directory_list:
+  - /opt/gitlab
+  - /opt/gitlab/config
+  - /opt/gitlab/logs
+  - /opt/gitlab/data
+  - /opt/gitlab-runner
+  - /opt/gitlab-runner/config
+  - /opt/gitlab-runner/data
+
+################################################################
+
 root_dir: "/data/nginx/html"
 
 ################################################################
@@ -84,6 +95,7 @@ docker_packages:
   - docker-ce-cli
   - containerd.io
   - docker-compose-plugin
+  - docker-compose
 
 ################################################################
 
@@ -95,3 +107,4 @@ docker_vars:
     docker_state: present
     docker_user: "{{ deploy_user }}"
     docker_group: docker
+    docker_logrotate_dir: "/etc/logrotate.d"

@@ -27,7 +27,7 @@
       apt:
         name: docker-ce
         state: "{{ item.docker_state }}"
-        update_cache: true
+        update_cache: yes
       loop: "{{ docker_vars }}"
       tags:
         - docker

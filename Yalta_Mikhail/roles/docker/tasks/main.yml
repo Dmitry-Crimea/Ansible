@@ -11,11 +11,9 @@
   import_tasks: install_docker.yml
   tags: ['docker']
 
-#- name: 'INSTALL_APTOS | install aptos '
-#  import_tasks: install_aptos_cli.yml
-#
-#- name: 'CONFIG_APTOS | configure aptos '
-#  import_tasks: config_aptos_cli.yml
+- name: 'CONFIG | configure docker '
+  import_tasks: config.yml
+  tags: ['docker']
 
 
 

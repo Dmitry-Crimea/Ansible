@@ -2,6 +2,6 @@
 - hosts: node
 #  gather_facts: false
   roles:
-#    - docker
-    - logrotate
-    - ntp
+    - docker
+#    - logrotate
+#    - ntp

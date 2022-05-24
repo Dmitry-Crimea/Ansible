@@ -1,10 +1,10 @@
 ---
 
 ntp_defaults:
-  timezone: "Asia/Almaty"
+  timezone: "Europe/Moscow"
   tzdata_package: tzdata
   servers:
-    - "0.kz.pool.ntp.org"
-    - "1.kz.pool.ntp.org"
-    - "2.kz.pool.ntp.org"
-    - "3.kz.pool.ntp.org"
+    - "0.ru.pool.ntp.org"
+    - "1.ru.pool.ntp.org"
+    - "2.ru.pool.ntp.org"
+    - "3.ru.pool.ntp.org"
