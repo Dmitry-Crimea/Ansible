@@ -14,12 +14,11 @@
   import_role:
     name: selinux
   vars:
-    selinux_files: "/srv/www/site/.well-known/acme-challenge(/.*)?"
-  include_role:
-    name: selinux
+    selinux_files: "{{ item }}"
   loop:
     - "/srv/www/site/.well-known/acme-challenge(/.*)?"
     - "/etc/ssl(/.*)?"
+    - "/srv/www/site/.well-known/acme-challenge(/.*)?"
   loop_control:
     loop_var: selinux_files
 
