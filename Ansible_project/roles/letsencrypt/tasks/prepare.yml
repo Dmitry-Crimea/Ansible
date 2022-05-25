@@ -19,9 +19,8 @@
     - "/srv/www/site/.well-known/acme-challenge(/.*)?"
     - "/etc/ssl(/.*)?"
     - "/srv/www/site/.well-known/acme-challenge(/.*)?"
-#  loop_control:
-#    loop_var: selinux_files
-
+  loop_control:
+    loop_var: selinux_files
 
 - openssl_privatekey:
     path: /etc/ssl/private/crazydev.cf.pem
