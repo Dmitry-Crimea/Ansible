@@ -1,9 +1,15 @@
 ---
+- name: install epel-release
+  import_role:
+    name: os/package
+  vars:
+    package_action: "install"
+    package_list: "epel-release"
+
 
 - name: install the latest packages for firewalld
   import_role:
     name: os/package
-
   vars:
-    package_action: "present"
-    package_name: "acme-tiny"
+    package_action: "install"
+    package_list: "acme-tiny"

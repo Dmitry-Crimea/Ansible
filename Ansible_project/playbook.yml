@@ -3,9 +3,9 @@
 #  gather_facts: false
   roles:
 #    - docker
-    - letsencrypt
+#    - letsencrypt
 #    - rocky
-#    - nginx
-#    - selinux
-#    - logrotate
-#    - ntp
+    - nginx
+    - selinux
+    - logrotate
+    - ntp

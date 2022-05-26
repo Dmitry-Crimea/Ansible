@@ -8,4 +8,4 @@
     - name: "{{ package_action|title }} packages"
       include_tasks: "actions/{{ os_distribution }}.yml"
       vars:
-        package_name: "{{ package_list|join(',') }}"
+        package_name: "{{ package_list }}"
