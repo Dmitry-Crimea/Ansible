@@ -10,7 +10,7 @@ http {
   server {{ hostvars[host_name].ansible_host }}:80;
   {% endfor %}
   }
-  
+
  upstream frontend {
   {% for host_name in groups['appservers'] %}
   server {{ hostvars[host_name].ansible_host }}:9999;
