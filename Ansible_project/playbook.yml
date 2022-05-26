@@ -5,7 +5,9 @@
 #    - docker
 #    - letsencrypt
 #    - rocky
-    - nginx
-    - selinux
-    - logrotate
-    - ntp
+    - deploy_user
+    - postgre
+#    - nginx
+#    - selinux
+#    - logrotate
+#    - ntp

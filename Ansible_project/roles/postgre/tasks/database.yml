@@ -2,6 +2,7 @@
 - name: create database
   block:
     - name: Make sure the PostgreSQL databases are present
+      remote_user: "{{ deploy_user }}"
       postgresql_db:
         name: "{{ item.db }}"
 #        owner: "{{ item.owner }}"
