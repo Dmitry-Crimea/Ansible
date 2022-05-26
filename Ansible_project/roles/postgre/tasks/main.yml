@@ -8,6 +8,6 @@
   import_tasks: database.yml
   tags: 'postgresql_extensions'
 
-- name: 'CREATE_USER | create an user PostgreSQL'
-  import_tasks: user.yml
-  tags: 'postgresql_users
+#- name: 'CREATE_USER | create an user PostgreSQL'
+#  import_tasks: user.yml
+#  tags: 'postgresql_users
