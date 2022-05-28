@@ -3,17 +3,7 @@
 
 - name: Add Docker GPG apt Key install docker-ce & docker-compose
   block:
-    - name: Add Docker GPG apt Key
-#      remote_user: "{{ deploy_user }}"
-      apt_key:
-        url: "{{ item.docker_apt_key }}"
-        state: "{{ item.docker_state }}"
-      loop: "{{ docker_vars }}"
-      tags:
-        - docker
-
     - name: Add Docker Repository
-#      remote_user: "{{ deploy_user }}"
       apt_repository:
         repo: "{{ item.docker_repo }}"
         state: "{{ item.docker_state }}"
@@ -22,40 +12,16 @@
       tags:
         - docker
 
-    - name: Update apt and install docker-ce
-#      remote_user: "{{ deploy_user }}"
+    - name: install docker & docker-compose
       apt:
-        name: docker-ce
-        state: "{{ item.docker_state }}"
+        name: "{{ item }}"
+        state: present
         update_cache: yes
-      loop: "{{ docker_vars }}"
+      loop: "{{ docker_packages }}"
+      ignore_errors: True
       tags:
         - docker
 
-    - name: Add remote {{deploy_user}} user to "docker" group
-#      remote_user: "{{ deploy_user }}"
-      user:
-        name: "{{ item.docker_user }}"
-        group: "{{ item.docker_group }}"
-        append: yes
-      loop: "{{ docker_vars }}"
-      tags:
-        - docker
-
-    - name: Install Docker Module for Python
-#      remote_user: "{{ deploy_user }}"
-      pip:
-        name: docker
-      tags:
-        - docker
-
-- name: install docker & docker-compose
-#  remote_user: "{{ deploy_user }}"
-  apt:
-    name: "{{ item }}"
-    state: present
-    update_cache: yes
-  loop: "{{ docker_packages }}"
-  ignore_errors: True
-  tags:
-    - docker
+    - name: download docker-compose
+      shell: curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)"\
+             -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose

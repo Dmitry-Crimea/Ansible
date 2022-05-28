@@ -5,24 +5,27 @@
     path: "{{ item }}"
     state: directory
   loop: "{{ gitlab_directory_list }}"
+  tags:
+    - docker
 
-
-- name: install dependencies & aptitude
+- name: install dependencies gpg key
   block:
-    - name: Install aptitude
-      remote_user: "{{ deploy_user }}"
-      apt:
-        name: aptitude
-        state: latest
-        update_cache: yes
+    - name: Install gpg key
+      apt-key:
+        url: "{{ item.docker_gpg_key }}"
+        state: "{{ item.docker_gpg_state }}"
+      loop: "{{ docker_vars }}"
+      tags:
+        - docker
 
     - name: Install dependencies
-      remote_user: "{{ deploy_user }}"
       import_role:
         name: os/package
       vars:
         package_action: "install"
         package_list: "{{ dependencies }}"
+      tags:
+        - docker
 
 
 

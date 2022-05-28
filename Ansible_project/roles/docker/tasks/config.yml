@@ -1,7 +1,6 @@
 ---
 
 - name: copy docker-compose file
-#  remote_user: "{{ deploy_user }}"
   template:
     src: docker-compose.yml.j2
     dest: /root/docker-compose.yml
@@ -9,7 +8,6 @@
     - docker
 
 - name: copy gitlab.rb file
-#  remote_user: "{{ deploy_user }}"
   template:
     src: gitlab.rb .j2
     dest: "{{ docker_opt_path }}/gitlab.rb"
@@ -23,12 +21,10 @@
     - docker
 
 - name: move logrotate filein logrotate_dir
-#  remote_user: "{{ deploy_user }}"
   template:
     src: docker-container.j2
     dest: "{{ item.docker_logrotate_dir }}/docker-container"
   loop: "{{ docker_vars }}"
-
 
 - name: custom port SSH
   shell: sed -i 's/Port 22/Port 35242/g' /etc/ssh/sshd_config
