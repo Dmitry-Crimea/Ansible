@@ -91,7 +91,9 @@ aptos_project_vars:
 
 ################################################################
 
-docker_packages:
+docker_domain.name:
+
+docker_packages: sarawan.hopto.org
   - docker-ce
   - docker-ce-cli
   - containerd.io

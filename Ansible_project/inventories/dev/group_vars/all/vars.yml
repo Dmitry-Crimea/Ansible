@@ -1,37 +1,5 @@
 ---
-
-domain_name: crazydev.cf
-letencrypt_email:
-
-#firewall_ports: 22/tcp
-
-#systemd_unitdir: /usr/lib/systemd/system
-
-################################################################
-
-# firewall variables
-firewall:
-  ports:
-    - 9090/tcp
-    - 9100/tcp
-    - 3000/tcp
-    - 8500/tcp
-    - 22/tcp
-    - 8300/tcp
-    - 443/tcp
-    - 80/tcp
-    - 8301/tcp
-    - 8302/tcp
-    - 8302/udp
-    - 8502/tcp
-    - 8600/tcp
-    - 8600/udp
-
-  services:
-    - http
-    - https
-    -
-################################################################
+ansible_nodename:
 
 ntp:
   servers:
@@ -123,65 +91,13 @@ aptos_project_vars:
 
 ################################################################
 
-# Prometheus variables
+docker_domain.name:
 
-prometheus:
-  download_url: https://github.com/prometheus/prometheus/releases/download/v2.33.3/prometheus-2.33.3.linux-amd64.tar.gz
-  download_dir: /home/gu_admin/prometheus/unpack
-  unpack_dir: /home/gu_admin/prometheus/unpack
-  owner: prometheus
-  group: prometheus
-  etc_dir: /etc/prometheus
-  var_lib: /var/lib/prometheus
-  version: 2.33.3
-  local_bin: /usr/local/bin/
-  storage: /home/gu_admin/prometheus/data
-  retention_time: 180d
-  log: /var/log/prometheus/prometheus.log
-  targets_dir: /etc/prometheus/targets
-  alerts_dir: /etc/prometheus/alerts
-  remove_src: true
-
-#################################################################################
-
-# Node_exporter variables
-
-node_exporter:
-  logdir: /var/log/node_exporter
-  port: 9100
-  protocol: tcp
-  smartmon_version: "7"
-  service: node_exporter.service
-  smartd_service: smartd.service
-  consul_service: consul.service
-  metrics_dir: /var/lib/node_exporter/metrics
-  bin: /usr/local/bin/node_exporter
-  dir: /etc/node_exporter
-  systemd: /etc/systemd/system
-  download: /home/gu_admin/node_exporter/download
-  version: 1.3.1
-  architecture:
-  url: https://github.com/prometheus/node_exporter/releases/download/v1.3.1/node_exporter-1.3.1.linux-amd64.tar.gz
-  user: node_exporter
-  group: node_exporter
-
-##############################################################################
-
-# Logrotate variables
-
-logrotate:
-  owner: root
-  group: root
-  dir: /etc/logrotate.d
-
-################################################################
-
-docker_packages:
+docker_packages: sarawan.hopto.org
   - docker-ce
   - docker-ce-cli
   - containerd.io
   - docker-compose-plugin
-  - docker-compose
 
 ################################################################
 
@@ -193,4 +109,4 @@ docker_vars:
     docker_state: present
     docker_user: "{{ deploy_user }}"
     docker_group: docker
-    docker_logrotate_dir: "/etc/logrotate.d"
+    docker_opt_path: /opt/gitlab/config
