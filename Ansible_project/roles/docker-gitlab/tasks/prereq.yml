@@ -6,7 +6,7 @@
     state: directory
   loop: "{{ gitlab_directory_list }}"
   tags:
-    - docker
+    - docker-gitlab
 
 - name: install dependencies gpg key
   block:
@@ -16,7 +16,7 @@
         state: "{{ item.docker_gpg_state }}"
       loop: "{{ docker_vars }}"
       tags:
-        - docker
+        - docker-gitlab
 
     - name: Install dependencies
       import_role:
@@ -25,7 +25,7 @@
         package_action: "install"
         package_list: "{{ dependencies }}"
       tags:
-        - docker
+        - docker-gitlab
 
 
 

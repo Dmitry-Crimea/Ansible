@@ -2,7 +2,7 @@
 - hosts: node
 #  gather_facts: false
   roles:
-#    - docker
+#    - docker-gitlab
 #    - letsencrypt
 #    - rocky
     - deploy_user

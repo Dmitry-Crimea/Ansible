@@ -94,20 +94,18 @@ aptos_project_vars:
 docker_domain.name: sarawan.hopto.org
 
 docker_packages:
-  - docker-ce
-  - docker-ce-cli
+  - docker-gitlab-ce
+  - docker-gitlab-ce-cli
   - containerd.io
 
-
-
 docker_vars:
-  - name: docker
-    docker_repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} \
+  - name: docker-gitlab
+    docker_repo: "deb [arch=amd64] https://download.docker-gitlab.com/linux/{{ ansible_distribution | lower }} \
                  {{ ansible_distribution_release }} stable"
-    docker_apt_key: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+    docker_apt_key: "https://download.docker-gitlab.com/linux/{{ ansible_distribution | lower }}/gpg"
     docker_state: present
     docker_user: "{{ deploy_user }}"
-    docker_group: docker
+    docker_group: docker-gitlab
     docker_opt_path: /opt/gitlab/config
-    docker_gpg_key: https://download.docker.com/linux/ubuntu/gpg
+    docker_gpg_key: https://download.docker-gitlab.com/linux/ubuntu/gpg
     docker_gpg_state: present
