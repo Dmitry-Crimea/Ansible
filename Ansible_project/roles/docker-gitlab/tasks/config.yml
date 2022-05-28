@@ -5,7 +5,7 @@
     src: docker-gitlab-compose.yml.j2
     dest: /root/docker-gitlab-compose.yml
   tags:
-    - docker-gitlab
+    - docker
 
 - name: copy gitlab.rb file
   template:
@@ -13,12 +13,12 @@
     dest: "{{ docker_opt_path }}/gitlab.rb"
   loop: "{{ docker_vars }}"
   tags:
-    - docker-gitlab
+    - docker
 
 - name: reconfigure GitLab certificates
   shell: docker-gitlab exec -it gitlab bash && gitlab-ctl reconfigure
   tags:
-    - docker-gitlab
+    - docker
 
 - name: move logrotate filein logrotate_dir
   template:
@@ -31,12 +31,12 @@
   notify:
     - restart_ssh_service
   tags:
-    - docker-gitlab
+    - docker
 
 - name: starting up docker-gitlab-compose
   shell: docker-gitlab-compose up -d
   tags:
-    - docker-gitlab
+    - docker
 
 
 
