@@ -22,7 +22,6 @@
   tags:
     - docker
 
-
 - name: move logrotate filein logrotate_dir
 #  remote_user: "{{ deploy_user }}"
   template:
@@ -38,8 +37,8 @@
   tags:
     - docker
 
-- name: change domain name
-  shell: docker up -d
+- name: starting up docker-compose
+  shell: docker-compose up -d
   tags:
     - docker
 
