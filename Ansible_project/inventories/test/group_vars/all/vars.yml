@@ -107,5 +107,5 @@ docker_vars:
     docker_user: "{{ deploy_user }}"
     docker_group: docker-gitlab
     docker_opt_path: /opt/gitlab/config
-    docker_gpg_key: https://download.docker-gitlab.com/linux/ubuntu/gpg
+    docker_gpg_key: "https://download.docker-gitlab.com/linux/ubuntu/gpg"
     docker_gpg_state: present
