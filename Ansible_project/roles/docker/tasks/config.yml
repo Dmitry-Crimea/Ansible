@@ -1,14 +1,14 @@
 ---
 
 - name: copy docker-compose file
-  remote_user: "{{ deploy_user }}"
+#  remote_user: "{{ deploy_user }}"
   template:
     src: docker-compose.yml.j2
     dest: /root/docker-compose.yml
   tags:
     - docker
 - name: move logrotate filein logrotate_dir
-  remote_user: "{{ deploy_user }}"
+#  remote_user: "{{ deploy_user }}"
   template:
     src: docker-container.j2
     dest: "{{ item.docker_logrotate_dir }}/docker-container"

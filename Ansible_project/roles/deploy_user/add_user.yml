@@ -8,7 +8,7 @@
     state: "{{ item.project_state }}"
     groups: "{{ item.user_group }}"
     update_password: always
-  loop: "{{ aptos_project_vars }}"
+  loop: "{{ add_deploy_user }}"
 #  when: deploy_user is not defined
   tags:
     - new-user

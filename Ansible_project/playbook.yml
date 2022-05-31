@@ -2,11 +2,11 @@
 - hosts: node
 #  gather_facts: false
   roles:
-#    - docker
+    - docker
 #    - letsencrypt
 #    - rocky
-    - deploy_user
-    - postgre
+#    - deploy_user
+#    - postgre
 #    - nginx
 #    - selinux
 #    - logrotate

@@ -10,14 +10,14 @@
 - name: install dependencies & aptitude
   block:
     - name: Install aptitude
-      remote_user: "{{ deploy_user }}"
+#      remote_user: "{{ deploy_user }}"
       apt:
         name: aptitude
         state: latest
         update_cache: yes
 
     - name: Install dependencies
-      remote_user: "{{ deploy_user }}"
+#      remote_user: "{{ deploy_user }}"
       import_role:
         name: os/package
       vars:
