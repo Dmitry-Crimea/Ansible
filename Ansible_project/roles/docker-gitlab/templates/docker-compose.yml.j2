@@ -4,27 +4,38 @@ services:
    container_name: gitlab
    image: 'gitlab/gitlab-ce:latest'
    restart: always
-   hostname: '{{ docker_domain.name }}'
+   hostname: 'sarawan.hopto.org'
    environment:
      GITLAB_OMNIBUS_CONFIG: |
-       external_url 'https://{{ docker_domain.name }}'
+       external_url 'https://sarawan.hopto.org'
+       gitlab_rails['gitlab_shell_ssh_port'] = 8822
        # Add any other gitlab.rb configuration here, each on its own line
    ports:
-     - '80:80'
+     - '8000:80'
      - '443:443'
-     - '22:22'
+     - '8822:22'
    volumes:
      - '/opt/gitlab/config:/etc/gitlab'
      - '/opt/gitlab/logs:/var/log/gitlab'
      - '/opt/gitlab/data:/var/opt/gitlab'
+   networks:
+     - gitlab_net
 
   gitlab-runner:
    container_name: gitlab-runner
    image: gitlab/gitlab-runner:latest
+   privileged: true
    restart: always
+   depends_on:
+      - gitlab
    volumes:
      - '/opt/gitlab-runner/data:/home/gitlab_ci_multi_runner/data'
      - '/opt/gitlab-runner/config:/etc/gitlab-runner'
      - '/var/run/docker.sock:/var/run/docker.sock:rw'
    environment:
-     - CI_SERVER_URL=https://{{ docker_domain.name }}/ci
+     - CI_SERVER_URL=https://sarawan.hopto.org/ci
+   networks:
+     - gitlab_net
+
+networks:
+  gitlab_net:

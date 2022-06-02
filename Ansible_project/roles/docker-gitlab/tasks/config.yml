@@ -15,10 +15,10 @@
   tags:
     - docker
 
-- name: reconfigure GitLab certificates
-  shell: docker-gitlab exec -it gitlab bash && gitlab-ctl reconfigure
-  tags:
-    - docker
+#- name: reconfigure GitLab certificates
+#  shell: docker-gitlab exec -it gitlab bash && gitlab-ctl reconfigure
+#  tags:
+#    - docker
 
 - name: move logrotate filein logrotate_dir
   template:
@@ -26,17 +26,17 @@
     dest: "{{ item.docker_logrotate_dir }}/docker-gitlab-container"
   loop: "{{ docker_vars }}"
 
-- name: custom port SSH
-  shell: sed -i 's/Port 22/Port 35242/g' /etc/ssh/sshd_config
-  notify:
-    - restart_ssh_service
-  tags:
-    - docker
-
-- name: starting up docker-gitlab-compose
-  shell: docker-gitlab-compose up -d
-  tags:
-    - docker
+#- name: custom port SSH
+#  shell: sed -i 's/Port 22/Port 35242/g' /etc/ssh/sshd_config
+#  notify:
+#    - restart_ssh_service
+#  tags:
+#    - docker
+#
+#- name: starting up docker-gitlab-compose
+#  shell: docker-gitlab-compose up -d
+#  tags:
+#    - docker
 
 
 
