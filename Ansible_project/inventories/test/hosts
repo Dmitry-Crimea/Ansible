@@ -1,3 +1,2 @@
 [node]
-
-194.67.74.244
+node ansible_host=194.67.74.244 ansible_port=35242

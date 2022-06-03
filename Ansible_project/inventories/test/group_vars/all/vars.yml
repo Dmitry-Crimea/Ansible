@@ -10,6 +10,17 @@ ntp:
 
 ################################################################
 
+add_deploy_user:
+  - name: deploy
+    project_password: Password0312
+    user: deploy
+    project_shell: /bin/bash
+    project_state: present
+    user_group: sudo
+
+
+
+
 project:
   name_path: /opt/poll
   name: pollme
@@ -61,10 +72,10 @@ dependencies:
   - gnupg-agent
   - software-properties-common
   - wget
-#  - unzip
-#  - python3-pip
-#  - virtualenv
-#  - python3-setuptools
+  - unzip
+  - python3-pip
+  - virtualenv
+  - python3-setuptools
 
 ################################################################
 
@@ -74,38 +85,19 @@ directory:
   -
 ################################################################
 
-aptos_project_vars:
-  - name: aptos_project_vars
-    dir: "/{{ home_directory }}/{{ deploy_user }}/{{ workdir }}"
-    aptos_dir: "/{{ home_directory }}/{{ deploy_user }}/.aptos"
-    user: "{{ deploy_user }}"
-    version: "{{ aptos_version }}"
-    system_dir: /usr/local/bin
-    project_password: Password0312
-    project_shell: /bin/bash
-    project_state: present
-    user_group: sudo
-    aptos_dir_state: directory
-    aptos_url: "https://github.com/aptos-labs/aptos-core/releases/download/\
-                aptos-cli-v{{ aptos_version }}/aptos-cli-{{ aptos_version }}-Ubuntu-x86_64.zip"
+docker_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-compose-plugin
 
 ################################################################
 
-docker_domain.name: sarawan.hopto.org
-
-docker_packages:
-  - docker-gitlab-ce
-  - docker-gitlab-ce-cli
-  - containerd.io
-
 docker_vars:
-  - name: docker-gitlab
-    docker_repo: "deb [arch=amd64] https://download.docker-gitlab.com/linux/{{ ansible_distribution | lower }} \
+  - name: docker
+    docker_repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} \
                  {{ ansible_distribution_release }} stable"
-    docker_apt_key: "https://download.docker-gitlab.com/linux/{{ ansible_distribution | lower }}/gpg"
+    docker_apt_key: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
     docker_state: present
     docker_user: "{{ deploy_user }}"
-    docker_group: docker-gitlab
-    docker_opt_path: /opt/gitlab/config
-    docker_gpg_key: "https://download.docker-gitlab.com/linux/ubuntu/gpg"
-    docker_gpg_state: present
+    docker_group: docker

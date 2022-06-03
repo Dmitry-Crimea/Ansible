@@ -9,7 +9,7 @@ services:
      GITLAB_OMNIBUS_CONFIG: |
        external_url 'https://sarawan.hopto.org'
        gitlab_rails['gitlab_shell_ssh_port'] = 8822
-       # Add any other gitlab.rb configuration here, each on its own line
+# Add any other gitlab.rb configuration here, each on its own line
    ports:
      - '8000:80'
      - '443:443'

@@ -24,7 +24,7 @@
       import_role:
         name: os/package
       vars:
-        package_action: "install"
+        package_action: "present"
         package_list: "{{ dependencies }}"
       tags:
         - docker-gitlab
