@@ -8,18 +8,15 @@ services:
    environment:
      GITLAB_OMNIBUS_CONFIG: |
        external_url 'https://sarawan.hopto.org'
-       gitlab_rails['gitlab_shell_ssh_port'] = 8822
 # Add any other gitlab.rb configuration here, each on its own line
    ports:
-     - '8000:80'
+     - '80:80'
      - '443:443'
-     - '8822:22'
+     - '22:22'
    volumes:
      - '/opt/gitlab/config:/etc/gitlab'
      - '/opt/gitlab/logs:/var/log/gitlab'
      - '/opt/gitlab/data:/var/opt/gitlab'
-   networks:
-     - gitlab_net
 
   gitlab-runner:
    container_name: gitlab-runner
@@ -34,8 +31,4 @@ services:
      - '/var/run/docker.sock:/var/run/docker.sock:rw'
    environment:
      - CI_SERVER_URL=https://sarawan.hopto.org/ci
-   networks:
-     - gitlab_net
 
-networks:
-  gitlab_net:
