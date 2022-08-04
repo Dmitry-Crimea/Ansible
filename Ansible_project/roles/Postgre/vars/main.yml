@@ -1,1 +1,1 @@
----postgres_pack:  - postgres-9.2  - postgresql-contrib
+---dependencies:    - wget    - vim    - bash-completionpostgres_pack:    - postgresql-contrib    - postgresql-server-devel    - python3-psycopg2    - postgresql-server-13    - postgresql-client-13
