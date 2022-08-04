@@ -1,1 +1,1 @@
----- name: install {{ dependencies }}  apt:    name: "{{ item }}"    state: present    update_cache: yes  loop: "{{ dependencies }}"- name: Add Postgre apt Key  apt_key:    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc    state: present
+---- name: install {{ dependencies }}  apt:    name: "{{ item }}"    state: present    update_cache: yes  loop: "{{ dependencies }}"- name: Add Postgre apt Key  apt_key:    url: "{{ postgres_key_url }}"    state: present

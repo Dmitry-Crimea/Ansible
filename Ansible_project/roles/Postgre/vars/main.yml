@@ -1,1 +1,1 @@
----dependencies:    - wget    - vim    - bash-completionpostgres_pack:    - postgresql-contrib    - postgresql-server-devel    - python3-psycopg2    - postgresql-server-13    - postgresql-client-13
+---dependencies:    - wget    - vim    - bash-completionpostgres_pack:    - postgresql-contrib    - postgresql-server-devel    - python3-psycopg2    - postgresql-server-13    - postgresql-client-13postgres_key_url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
