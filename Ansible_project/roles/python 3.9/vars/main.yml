@@ -1,0 +1,7 @@
+---
+
+python_packages:
+  - python3.9
+  - python3-pip
+
+project_root: /
