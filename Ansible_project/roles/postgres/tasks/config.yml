@@ -1,3 +1,15 @@
+---
+
+- name: Change listen_addresses to '*'
+  lineinfile:
+    dest: "/etc/postgresql/{{ pg_version }}/main/postgresql.conf"
+    regexp: "^#listen_addresses"
+    line: "listen_addresses = '*'"
+    state: present
+    backup: yes
+  notify:
+    - restart postgresql
+
 - name: Configure pg_hba.conf
   template:
     src: ./templates/pg_hba.conf.j2
