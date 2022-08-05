@@ -1,8 +1,9 @@
 ---
 - hosts: node
-#  gather_facts: false
+  gather_facts: false
   roles:
-    - docker-gitlab
+    - postgres
+#    - docker-gitlab
 #    - letsencrypt
 #    - rocky
 #    - deploy_user
