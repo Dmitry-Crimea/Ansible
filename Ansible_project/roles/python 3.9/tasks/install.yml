@@ -23,9 +23,14 @@
     update_cache: yes
   loop: "{{ python_packages }}"
 
-- name: Run a pipenv install
-  environment:
-    LANG: "en_GB.UTF-8"
-  command: "pipenv --bare install --dev"
-  args:
-    chdir: "{{ project_root }}"
+- name: install DRF 3.12.4
+  pip:
+    name: "{{ item }}"
+  loop: "{{ python_pip_packages }}"
+
+#- name: Run a pipenv install
+#  environment:
+#    LANG: "en_GB.UTF-8"
+#  command: "pipenv --bare install --dev"
+#  args:
+#    chdir: "{{ project_root }}"
