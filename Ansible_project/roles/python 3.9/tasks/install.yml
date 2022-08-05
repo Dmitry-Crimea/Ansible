@@ -5,16 +5,19 @@
     name: software-properties-common
     state: present
     update_cache: yes
+  tags: ['python']
 
 - name: add a PPA repository
   apt_repository:
     validate_certs: no
     repo: 'ppa:ondrej/php'
     state: present
+  tags: ['python']
 
 - name: add path on .bashrc
   shell:
     cmd: echo 'export PATH="${HOME}/.local/bin:$PATH"' >> ~/.bashrc
+  tags: ['python']
 
 - name: install {{ python_packages }}
   apt:
@@ -22,11 +25,13 @@
     state: present
     update_cache: yes
   loop: "{{ python_packages }}"
+  tags: ['python']
 
 - name: install DRF 3.12.4
   pip:
     name: "{{ item }}"
   loop: "{{ python_pip_packages }}"
+  tags: ['python']
 
 #- name: Run a pipenv install
 #  environment:

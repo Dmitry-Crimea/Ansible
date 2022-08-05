@@ -2,7 +2,8 @@
 - hosts: node
 #  gather_facts: false
   roles:
-    - postgres
+#    - postgres
+    - python 3.9
 #    - docker-gitlab
 #    - letsencrypt
 #    - rocky
