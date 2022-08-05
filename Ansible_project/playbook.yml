@@ -1,6 +1,6 @@
 ---
 - hosts: node
-  gather_facts: false
+#  gather_facts: false
   roles:
     - postgres
 #    - docker-gitlab
